@@ -8,10 +8,14 @@ Usuario::Usuario(std::string nome, unsigned int idade) : _nome(nome), _idade(ida
 Usuario::~Usuario() {
 }
 
-int Usuario::getId() const{
+unsigned int Usuario::getId() const{
     return _id;
 }
 
-int Usuario::getSeguidores() const{
+unsigned int Usuario::getNumSeguidores() const{
     return _num_seguidores;
+}
+
+unsigned int Usuario::getNumTemas() const{
+    return _num_temas;
 }

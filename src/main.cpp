@@ -8,14 +8,16 @@
 #define CAPACIDADE_MAXIMA_INICIAL 30
 
 int main(){
-    Usuario *usuarios[CAPACIDADE_MAXIMA_INICIAL];
-    Tema *temas[CAPACIDADE_MAXIMA_INICIAL];
-    Grafo grafo_social(CAPACIDADE_MAXIMA_INICIAL);
-    Grafo grafo_temas(CAPACIDADE_MAXIMA_INICIAL);
-
     std::string line;
-    char comando;
+    std::getline(std::cin, line);
+    std::stringstream ss(line);
 
+    //cria um grafo no dicionario do tipo solicitado
+    char c, tipoML;
+    ss >> c >> tipoML;
+    Dicionario Dicionario(tipoML);
+
+    char comando;
     while(std::getline(std::cin, line)){
         if (line.empty())
             continue;
@@ -24,26 +26,43 @@ int main(){
         ss >> comando;
 
         switch (comando) {
-        case 'A':
-        char tipo;
-        ss >> tipo;
-            if(tipo == 'L'){
-                grafo_social.trocaTipo(0, 'L', usuarios);
+        case 'A': {
+            char tipo;
+            ss >> tipo;
+            if(tipo == 'M'){
+                Dicionario.getGrafoSocial()->trocaTipo(0, 'M', Dicionario.getUsuarios(), Dicionario.getNumUsuarios(), Dicionario.getNumTemas());
+                tipoML = 'M';
 
             }
-            else if(tipo == 'M'){
-                grafo_social.trocaTipo(0, 'M', usuarios);
+            else if(tipo == 'L'){
+                Dicionario.getGrafoSocial()->trocaTipo(0, 'L', Dicionario.getUsuarios(), Dicionario.getNumUsuarios(), Dicionario.getNumTemas());
+                tipoML = 'L';
             }
             break;
+        }
+
+        case 'T': {
+            std::string nome_tema, tipo_tema;
+            ss >> nome_tema >> tipo_tema;
+            Tema *novoTema = new Tema(nome_tema, tipo_tema);
+            //adicionar o tema na lista de temas<<<<<<<
+            Dicionario.setNumTemas(Dicionario.getNumTemas()+1);
+
+            std::cout << "T "+Dicionario.getNumTemas();
+            break;
+        }
+
+        case 'U': {
+            std::string nome, idade;
+            int idstemas;
+
+            break;
+        }
         
         default:
             break;
         }
         
     }
-
-
-    
-
     
 }
