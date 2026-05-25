@@ -17,17 +17,11 @@ Grafo::Grafo(Usuario **usuarios, int num_usuarios, int num_temas, char tipoML, b
                 _matriz[i] = new int[num_temas]();
         }
     }
-    if(tipoML == 'L'){ //tipo lista de adjacencia
+    else if(tipoML == 'L'){ //tipo lista de adjacencia
         _tipoML = 'L';
         _lista = new int*[num_usuarios];
-        if(!tipo_grafoST){ // se for grafo social
-            for(int i=0; i<num_usuarios; i++)
-                _lista[i] = new int[num_usuarios]();
-        }
-        else{ //se for grafo de temas
-            for(int i=0; i<num_usuarios; i++)
-                _lista[i] = new int[num_temas]();
-        }
+        for(int i=0; i<num_usuarios; i++)
+            _lista[i] = nullptr;
     }
 }
 

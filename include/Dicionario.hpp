@@ -3,7 +3,9 @@
 #include "Grafo.hpp"
 
 #define CAPACIDADE_MAXIMA_INICIAL 30
+#define ORDEM_DE_CRESCIMENTO_DE_USUARIOSeTEMAS 10
 
+#pragma once
 class Dicionario {
 private:
     int _num_usuarios, _num_temas;
@@ -30,8 +32,17 @@ public:
     void setNumTemas(int novo_num_temas);
 
     //outras funcoes
-    void adicionarUsuario(Usuario *usuario);
+    void adicionarUsuario(Usuario *usuario, int indices_temas[], int num_temas_usuario);
     void adicionarTema(Tema *tema);
+    void seguir(unsigned int id1, unsigned int id2);
+    void remocaoSeguidor(unsigned int id1, unsigned int id2);
+    void listaTemas(unsigned int id);
+    void consultaSeguidores(unsigned int id);
+    void consultaSeguidos(unsigned int id);
+    void consultaAmigos(unsigned int id);
+    int consultaRelacao(unsigned int id1, unsigned int id2);
+    int consultaDeInteresse(unsigned int id_usuario, unsigned int id_tema);
+    int consultaDePopularidade(unsigned int id_tema);
 
 
 };

@@ -1,4 +1,5 @@
 #include <string>
+#pragma once
 
 class Tema {
 private:
@@ -10,4 +11,8 @@ public:
     Tema(){_id=-1;};
     Tema(std::string nome, std::string tipo);
     ~Tema();
+
+    //getters
+    unsigned int getId() const;
+    std::string getNome() const;
 };

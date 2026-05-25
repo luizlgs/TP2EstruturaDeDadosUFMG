@@ -3,6 +3,7 @@
 #include <math.h>
 #include "../include/Usuario.hpp"
 #include "../include/Tema.hpp"
+#pragma once
 
 class Grafo {
 private:
